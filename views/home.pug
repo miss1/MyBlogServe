@@ -1,0 +1,28 @@
+extends layout
+
+block link
+  link(rel='stylesheet', href='/stylesheets/home.css')
+
+block script
+  script(src='/javascripts/home.js')
+
+block content
+  .page.content
+    .articleList
+      each item in data
+        .item.wow.fadeInUp.animated
+          .left
+            p.title= item.title
+            p.subtitle= item.subtitle
+            p.time= item.timestamp
+          .right
+            button.btn.btn-primary.btn-sm(type='button')
+              a(href='/admin/editor?id='+item.id) 编辑
+            button.btn.btn-danger.btn-sm(type='button' data-toggle='modal' data-target='#myModal') 删除
+      +pageNation(totalPage, pageSize, total, curPage, '/admin/home')
+    +confirmModal('提示', '确定要删除这篇文章吗？')
+      button.btn.btn-primary(type="button")
+        a(href="#") OK
+
+
+

@@ -1,0 +1,26 @@
+.content {
+  width: 90%;
+  margin: 20px auto;
+  overflow-x: hidden;
+}
+.content .ck.ck-editor {
+  position: static;
+}
+.content .ck.ck-editor .ck-editor__main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  top: 38px;
+}
+.content .ck.ck-editor .ck-editor__main .ck-editor__editable {
+  height: 100%;
+}
+.content .btnPanel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.content .btnPanel button {
+  margin-left: 10px;
+}

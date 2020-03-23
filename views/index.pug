@@ -1,0 +1,19 @@
+extends layout
+
+block link
+  link(rel='stylesheet', href='/stylesheets/index.css')
+
+block content
+  div.page.content
+    div.loginPanel.fadeInUp.animated
+      p.title my blog
+      form.dologin(action='doLogin' method='post')
+        div
+          label 用户名
+          input(name='username' type='text' required)
+        div
+          label 密码
+          input(name='password' type='password' required)
+        div(style='height: 80px')
+          input.btn(type='submit' value='登录')
+          p.errTip=msg

@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/animate.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block link
+    script(src='/javascripts/lib/jquery.3.4.1.min.js')
+    script(src='/javascripts/lib/bootstrap.min.js')
+    script(src='/javascripts/lib/wow.js')
+    script
+      | new WOW().init()
+  body
+    div.top
+    div.head.fadeInDown.animated
+      div.left
+        | my blog
+      div.right
+        a(href='#') home
+        a(href='#') user
+    mixin confirmModal(title, message)
+      #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel')
+        .modal-dialog.modal-sm(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button' data-dismiss='modal' aria-label='Close')
+                span(aria-hidden='true') &times;
+              h4.modal-title= title
+            .modal-body= message
+            .modal-footer
+              button.btn.btn-default(type='button' data-dismiss='modal') Close
+              if block
+                block
+    mixin pageNation(totalPage, pageSize, total, curPage, url)
+      if totalPage > 1
+        .my-page-nation
+          nav(aria-label='Page navigation')
+            ul.pagination
+              if curPage === 1
+                li.disabled
+                  a(href='#' aria-label='Previous')
+                    span(aria-hidden='true') &laquo;
+              else
+                li
+                  a(href=url+'?page='+ (curPage-1) +'&pageSize='+pageSize aria-label='Previous')
+                    span(aria-hidden='true') &laquo;
+              - for (var i = 1; i <= totalPage; i++)
+                if curPage === i
+                  li.active
+                    a(href='#')= i
+                else
+                  li
+                    a(href=url+'?page='+ i +'&pageSize='+pageSize)= i
+              if curPage === totalPage
+                li.disabled
+                  a(href='#' aria-label='Next')
+                    span(aria-hidden='true') &raquo;
+              else
+                li
+                  a(href=url+'?page='+ (curPage+1) +'&pageSize='+pageSize aria-label='Next')
+                    span(aria-hidden='true') &raquo;
+          .page-tip= pageSize + '条/页 共' + total + '条'
+    block content
+    block script

@@ -1,0 +1,15 @@
+extends layout
+
+block link
+  link(rel='stylesheet', href='/stylesheets/editor.css')
+
+block script
+  script(src='/javascripts/lib/ckeditor.js')
+  script(src='/javascripts/editor.js')
+
+block content
+  .page.content
+    #editor
+    .btnPanel
+      button.btn.btn-primary(onclick='onSubmit()') 发布
+      button.btn.btn-warning(onclick='onSave()') 暂存

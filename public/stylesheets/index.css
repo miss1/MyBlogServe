@@ -1,0 +1,57 @@
+input {
+  border: none;
+}
+.head {
+  display: none;
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  text-align: center;
+  font-size: 40px;
+}
+.dologin {
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid #e7eaf1;
+  border-radius: 5px;
+  box-shadow: 0 1px 10px #777;
+  box-sizing: border-box;
+  padding-top: 60px;
+}
+.dologin div {
+  width: 260px;
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 15px;
+}
+.dologin div label {
+  display: inline-block;
+  width: 60px;
+  text-align: right;
+}
+.dologin div input {
+  margin-left: 10px;
+  outline: none;
+  border-bottom: 1px solid #888;
+}
+.dologin div .btn {
+  width: 200px;
+  height: 35px;
+  border: 1px solid #00bfff;
+  cursor: pointer;
+  background-color: #00bfff;
+  color: #fff;
+  border-radius: 5px;
+}
+.dologin div .errTip {
+  width: 200px;
+  text-align: left;
+  margin-left: 40px;
+  font-size: 14px;
+  color: #f00;
+}
