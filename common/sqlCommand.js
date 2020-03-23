@@ -3,7 +3,7 @@
  */
 
 // user表
-let userStatus = {
+const userStatus = {
   insertOne: 'INSERT INTO user (avatar, introduction, signature, nickName, titleName) VALUES(?, ?, ?, ?, ?)',
   deleteOne: 'DELETE FROM user WHERE id = ?',
   updateOne: 'UPDATE user SET avatar= ?,introduction = ?,signature = ?,nickName = ?,titleName = ? WHERE id = ?',
@@ -11,7 +11,7 @@ let userStatus = {
 }
 
 // article表
-let articleStatus = {
+const articleStatus = {
   insertOne: 'INSERT INTO article (content, title, subtitle, timestamp, cover) VALUES(?, ?, ?, ?, ?)',
   deleteOne: 'DELETE FROM article WHERE id = ?',
   updateOne: 'UPDATE article SET content= ?,title = ?,subtitle = ?,timestamp = ?,cover = ? WHERE id = ?',

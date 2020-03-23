@@ -11,11 +11,6 @@
       "public/"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "standard \"**/*.js\" | snazzy"
-    }
-  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -32,7 +27,6 @@
     "stylus": "0.54.5"
   },
   "devDependencies": {
-    "husky": "^4.2.3",
     "snazzy": "^8.0.0",
     "standard": "^14.3.3"
   }

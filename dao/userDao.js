@@ -65,6 +65,7 @@ function getArticleList (req, callback) {
     console.log(sqlRes)
     callback(sqlRes, true)
   }, err => {
+    console.log(err)
     sqlRes = { title: 'home', message: 'Database Query Error', error: { status: 500 } }
     callback(sqlRes, false)
   })

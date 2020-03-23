@@ -1,4 +1,3 @@
-var express = require('express')
 var config = require('../conf/config')
 var formidable = require('formidable')
 var fs = require('fs')
