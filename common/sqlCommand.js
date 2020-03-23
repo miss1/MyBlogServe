@@ -3,7 +3,7 @@
  */
 
 // user表
-var user_status = {
+let userStatus = {
   insertOne: 'INSERT INTO user (avatar, introduction, signature, nickName, titleName) VALUES(?, ?, ?, ?, ?)',
   deleteOne: 'DELETE FROM user WHERE id = ?',
   updateOne: 'UPDATE user SET avatar= ?,introduction = ?,signature = ?,nickName = ?,titleName = ? WHERE id = ?',
@@ -11,7 +11,7 @@ var user_status = {
 }
 
 // article表
-var article_status = {
+let articleStatus = {
   insertOne: 'INSERT INTO article (content, title, subtitle, timestamp, cover) VALUES(?, ?, ?, ?, ?)',
   deleteOne: 'DELETE FROM article WHERE id = ?',
   updateOne: 'UPDATE article SET content= ?,title = ?,subtitle = ?,timestamp = ?,cover = ? WHERE id = ?',
@@ -21,6 +21,6 @@ var article_status = {
 }
 
 module.exports = {
-  user: user_status,
-  article: article_status
+  user: userStatus,
+  article: articleStatus
 }
