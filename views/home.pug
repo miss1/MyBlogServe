@@ -18,11 +18,11 @@ block content
           .right
             button.btn.btn-primary.btn-sm(type='button')
               a(href='/admin/editor?id='+item.id) 编辑
-            button.btn.btn-danger.btn-sm(type='button' data-toggle='modal' data-target='#myModal') 删除
+            button.btn.btn-danger.btn-sm(type='button' data-toggle='modal' data-target='#myModal' onclick='setId('+ item.id +')') 删除
       +pageNation(totalPage, pageSize, total, curPage, '/admin/home')
+    a.add-icon.wow.pulse.animated(href='/admin/editor' data-wow-delay='300ms' data-wow-iteration='infinite' data-wow-duration='2s') +
     +confirmModal('提示', '确定要删除这篇文章吗？')
-      button.btn.btn-primary(type="button")
-        a(href="#") OK
+      button.btn.btn-primary(type='button' onclick='submitDelete()') OK
 
 
 

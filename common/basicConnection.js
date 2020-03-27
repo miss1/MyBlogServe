@@ -27,6 +27,7 @@ function responseDoReturn (res, result, resultJSON) {
  */
 function query (sql, callback) {
   pool.getConnection(function (err, connection) {
+    console.log(err)
     connection.query(sql, function (err, rows) {
       callback(err, rows)
       // 释放链接
@@ -40,6 +41,7 @@ function query (sql, callback) {
  */
 function queryArgs (sql, args, callback) {
   pool.getConnection(function (err, connection) {
+    console.log(err)
     connection.query(sql, args, function (err, rows) {
       callback(err, rows)
       // 释放链接

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "standard \"**/*.js\" | snazzy"
+    "test": "standard \"**/*.js\" | snazzy",
+    "fix": "standard --fix"
   },
   "standard": {
     "ignore": [

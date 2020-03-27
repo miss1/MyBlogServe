@@ -71,11 +71,36 @@ function getArticleList (req, callback) {
   })
 }
 
-function deleteArticle (req, res) {
+function getArticleById (req, callback) {
+  const param = config.getParams(req)
+  const id = param.id
 
+  db.queryArgs($sqlCommands.article.queryById, [id], (err, result) => {
+    if (!err) {
+      console.log(result)
+    } else {
+      console.log(err)
+    }
+  })
+}
+
+function deleteArticle (req, res) {
+  const param = config.getParams(req)
+  const id = param.id
+  db.queryArgs($sqlCommands.article.deleteOne, [id], (err, result) => {
+    if (!err) {
+      console.log('delete ' + id + ' success')
+      res.redirect('/admin/home?page=1&pageSize=10')
+    } else {
+      console.log(err)
+      res.render('error', { title: 'home', message: 'Database Query Error', error: { status: 500 } })
+    }
+  })
 }
 
 module.exports = {
   addUserActions: addUserAction,
-  getArticleList: getArticleList
+  getArticleList: getArticleList,
+  getArticleById: getArticleById,
+  deleteArticle: deleteArticle
 }

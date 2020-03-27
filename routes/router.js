@@ -12,6 +12,7 @@ exports.setRequestUrl = function (app) {
   app.post('/admin/doLogin', index.doLogin)
   app.get('/admin/home', index.home)
   app.get('/admin/editor', index.editor)
+  app.get('/admin/delete', index.deleteArticle)
 
   /* 客户端 */
   app.post('/admin/uploadFile', client.uploadFile)

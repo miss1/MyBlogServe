@@ -35,12 +35,20 @@ function home (req, res, next) {
 }
 
 function editor (req, res, next) {
+  userDao.getArticleById(req, (result, tag) => {
+
+  })
   res.render('editor', { title: 'editor', msg: '' })
+}
+
+function deleteArticle (req, res, next) {
+  userDao.deleteArticle(req, res, next)
 }
 
 module.exports = {
   login: login,
   doLogin: doLogin,
   home: home,
-  editor: editor
+  editor: editor,
+  deleteArticle: deleteArticle
 }
