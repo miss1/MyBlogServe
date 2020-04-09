@@ -12,16 +12,42 @@ ClassicEditor.create( document.querySelector( '#editor' ), {
   myEditor = editor
 }).catch( error => {
   console.error( error )
-});
+})
 
 $(document).ready(() => {
-  myEditor.setData('<p>哈哈哈</p>')
-});
+  getArticleDetail()
+})
 
 let onSubmit = () => {
   console.log(myEditor.getData())
-};
+}
+
+let getArticleDetail = () => {
+  let id = getQueryString('id')
+  $.ajax({
+    type : "get",
+    url : '/client/article/detail',
+    data: {id: id},
+    success : function(data) {
+      console.log(data)
+      if (data.success){
+        myEditor.setData(data.data.content)
+      }else {
+        console.error(data.message)
+      }
+    },
+    error : function() {
+      console.log('err')
+    }
+  });
+}
 
 let onSave = () => {
   console.log(myEditor.getData())
-};
+}
+
+let getQueryString = (name) => {
+  let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  let r = window.location.search.substr(1).match(reg);
+  if (r != null) return unescape(r[2]); return null;
+}

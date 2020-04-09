@@ -21,14 +21,21 @@ function addUserAction (req, res, next) {
   })
 }
 
-function getArticleList (req, callback) {
+function getArticleList (req, isDraft, callback) {
   const param = config.getParams(req)
   const size = parseInt(param.pageSize)
   const total = (parseInt(param.page) - 1) * size
   let sqlRes = {}
 
+  let title = ''
+  if (isDraft === 0){
+    title = 'home'
+  }else {
+    title = 'draft'
+  }
+
   const queryList = new Promise((resolve, reject) => {
-    db.queryArgs($sqlCommands.article.queryByPage, [total, size], (err, result) => {
+    db.queryArgs($sqlCommands.article.queryByPage, [isDraft, total, size], (err, result) => {
       if (!err) {
         const arrayList = JSON.parse(JSON.stringify(result))
         console.log(arrayList)
@@ -41,7 +48,7 @@ function getArticleList (req, callback) {
   })
 
   const queryCount = new Promise((resolve, reject) => {
-    db.query($sqlCommands.article.queryCount, (err, result) => {
+    db.queryArgs($sqlCommands.article.queryCount, [isDraft], (err, result) => {
       if (!err) {
         const count = JSON.parse(JSON.stringify(result[0]))['COUNT(*)']
         console.log(count)
@@ -55,7 +62,7 @@ function getArticleList (req, callback) {
 
   Promise.all([queryList, queryCount]).then(data => {
     sqlRes = {
-      title: 'home',
+      title: title,
       curPage: parseInt(param.page),
       pageSize: size,
       total: data[1],
@@ -66,21 +73,40 @@ function getArticleList (req, callback) {
     callback(sqlRes, true)
   }, err => {
     console.log(err)
-    sqlRes = { title: 'home', message: 'Database Query Error', error: { status: 500 } }
+    sqlRes = { title: title, message: 'Database Query Error', error: { status: 500 } }
     callback(sqlRes, false)
   })
 }
 
-function getArticleById (req, callback) {
+function getArticleById (req, res, next) {
   const param = config.getParams(req)
   const id = param.id
+  let response = {}
+
+  if (!id){
+    response = {
+      success: false,
+      message: '文章id不能为空'
+    }
+    db.doReturn(res, response)
+    return
+  }
 
   db.queryArgs($sqlCommands.article.queryById, [id], (err, result) => {
+    result = result.length > 0 ? result[0] : null
     if (!err) {
-      console.log(result)
-    } else {
+      response = {
+        success: true,
+        data: JSON.parse(JSON.stringify(result))
+      }
+    }else {
       console.log(err)
+      response = {
+        success: false,
+        message: 'Database Query Error'
+      }
     }
+    db.doReturn(res, response)
   })
 }
 

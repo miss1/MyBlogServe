@@ -13,6 +13,10 @@ function test (req, res, next) {
   res.json(result); */
 }
 
+function getArticleById (req, res, next) {
+  userDao.getArticleById(req, res, next)
+}
+
 /* 图片上传 */
 function uploadFile (req, res, next) {
   const form = new formidable.IncomingForm() // 创建上传表单
@@ -72,5 +76,6 @@ function uploadFile (req, res, next) {
 
 module.exports = {
   test: test,
-  uploadFile: uploadFile
+  uploadFile: uploadFile,
+  getArticleById: getArticleById
 }

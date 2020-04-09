@@ -17,7 +17,8 @@ html
       div.left
         | my blog
       div.right
-        a(href='#') home
+        a(href='/admin/home?page=1&pageSize=10') home
+        a(href='/admin/draft?page=1&pageSize=10') draft
         a(href='#') user
     mixin confirmModal(title, message)
       #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel')

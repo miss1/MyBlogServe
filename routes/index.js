@@ -25,7 +25,17 @@ function doLogin (req, res, next) {
 
 /* home */
 function home (req, res, next) {
-  userDao.getArticleList(req, (result, tag) => {
+  userDao.getArticleList(req, 0, (result, tag) => {
+    if (tag) {
+      res.render('home', result)
+    } else {
+      res.render('error', result)
+    }
+  })
+}
+
+function draft (req, res, next) {
+  userDao.getArticleList(req, 1, (result, tag) => {
     if (tag) {
       res.render('home', result)
     } else {
@@ -35,9 +45,6 @@ function home (req, res, next) {
 }
 
 function editor (req, res, next) {
-  userDao.getArticleById(req, (result, tag) => {
-
-  })
   res.render('editor', { title: 'editor', msg: '' })
 }
 
@@ -49,6 +56,7 @@ module.exports = {
   login: login,
   doLogin: doLogin,
   home: home,
+  draft: draft,
   editor: editor,
   deleteArticle: deleteArticle
 }

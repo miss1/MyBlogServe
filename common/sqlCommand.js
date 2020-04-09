@@ -16,8 +16,8 @@ const articleStatus = {
   deleteOne: 'DELETE FROM article WHERE id = ?',
   updateOne: 'UPDATE article SET content= ?,title = ?,subtitle = ?,timestamp = ?,cover = ? WHERE id = ?',
   queryById: 'SELECT * FROM article WHERE id = ?',
-  queryByPage: 'SELECT * FROM article ORDER BY timestamp DESC LIMIT ?,?',
-  queryCount: 'SELECT COUNT(*) FROM article'
+  queryByPage: 'SELECT * FROM article WHERE isdraft = ? ORDER BY timestamp DESC LIMIT ?,?',
+  queryCount: 'SELECT COUNT(*) FROM article WHERE isdraft = ?'
 }
 
 module.exports = {

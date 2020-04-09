@@ -11,10 +11,12 @@ exports.setRequestUrl = function (app) {
   app.get('/admin/login', index.login)
   app.post('/admin/doLogin', index.doLogin)
   app.get('/admin/home', index.home)
+  app.get('/admin/draft', index.draft)
   app.get('/admin/editor', index.editor)
   app.get('/admin/delete', index.deleteArticle)
 
   /* 客户端 */
   app.post('/admin/uploadFile', client.uploadFile)
   app.post('/client/test', client.test)
+  app.get('/client/article/detail', client.getArticleById)
 }
