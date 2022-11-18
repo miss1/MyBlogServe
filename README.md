@@ -4,15 +4,15 @@
 
 ## Database Design
 
-数据库结构 @directory blog.sql
+database structure @directory blog.sql
 
 
 
-## 后端
+## Back-end
 
 myBlogServe
 
-### 架构
+### Architecture
 
 - nodejs >= 8.16.2
 - express
@@ -22,27 +22,27 @@ myBlogServe
 
 
 
-### 导入项目
+### Import project
 
-idea导入项目
+idea import project
 
-npm install 在项目根目录打开命令行工具，安装依赖包
+npm install: Open the command line tool in the project root directory and install the dependency package
 
-配置configurations
+configurations
 
 ![](D:\PersonalCode\myBlog\myBlogServe\Screenshot\serve.png)
 
 
 
-### 文件目录结构
+### File directory structure
 
 ```
-@directory bin 启动项目的脚本文件
-@directory common 公共方法（正则、sql、二次封装）
-@directory conf 开发配置文件（数据库连接、邮件配置）
-@directory dao 操作数据库，接口的实现
-@directory public 前端静态文件（image、js、stylus）
-@directory routes 路由
-@directory views 页面文件（pug）
+@directory bin: Script file to start the project
+@directory common: Public methods (regular, sql, secondary encapsulation)
+@directory conf: Development configuration files (database connection, mail configuration)
+@directory dao: Operation database, implementation of interface
+@directory public: Front-end static files (image, js, stylus)
+@directory routes: routing
+@directory views: paging files (pug)
 ```
 
